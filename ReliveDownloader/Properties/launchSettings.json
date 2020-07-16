@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "ReliveDownloader": {
+      "commandName": "Project",
+      "commandLineArgs": "-d"
+    }
+  }
+}
