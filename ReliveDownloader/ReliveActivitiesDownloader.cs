@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
+using ReliveDownloader.Configurations;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -46,8 +47,9 @@ namespace ReliveDownloader
         private static void LoginToRelive(IConfigurationRoot config, ChromeDriver driver)
         {
             var configurationSection = config.GetSection(nameof(Configuration));
-            var email = configurationSection.GetSection(nameof(Configuration.Email)).Value;
-            var password = configurationSection.GetSection(nameof(Configuration.Password)).Value;
+            var reliveConfiguration = configurationSection.GetSection(nameof(Configuration.ReliveConfiguration));
+            var email = reliveConfiguration.GetSection(nameof(ReliveConfiguration.Email)).Value;
+            var password = reliveConfiguration.GetSection(nameof(ReliveConfiguration.Password)).Value;
 
             driver.FindElement(By.Name("email")).SendKeys(email);
             driver.FindElement(By.Name("password")).SendKeys(password);
